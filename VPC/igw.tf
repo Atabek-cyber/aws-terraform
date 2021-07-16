@@ -28,21 +28,21 @@ resource "aws_route_table" "example" {
     gateway_id = aws_internet_gateway.gw.id
   }
   tags = {
-    Name = "ThreeTier"
+    Name = "ThreeTier-Private"
   }
 }
 
 resource "aws_route_table_association" "Public1" {
   subnet_id      = aws_subnet.Public1.id
-  route_table_id = aws_route_table.example.id
+  route_table_id = aws_route_table.Private.id
 }
 
 resource "aws_route_table_association" "Public2" {
   subnet_id      = aws_subnet.Public2.id
-  route_table_id = aws_route_table.example.id
+  route_table_id = aws_route_table.Private.id
 }
 
 resource "aws_route_table_association" "Public3" {
   subnet_id      = aws_subnet.Public3.id
-  route_table_id = aws_route_table.example.id
+  route_table_id = aws_route_table.Private.id
 }
